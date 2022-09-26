@@ -4,6 +4,9 @@
     <img src="/assets/images/logo.svg" alt="logo">
     <div class="ui form">
       <!-- TODO: Here goes your markup -->
+     <bg-login *ngIf="route.snapshot.routeConfig.path === 'auth' ||
+                      route.snapshot.routeConfig.path === ''"></bg-login>
+      <bg-register *ngIf="route.snapshot.routeConfig.path === 'auth/register'"></bg-register>
     </div>
   </div>
 </div>
