@@ -1,44 +1,58 @@
-<div class="fields">
-  <div class="sixteen wide field">
-    <div class="ui left icon input">
-      <input type="text" id="name" placeholder="სახელი">
-      <i class="address card icon"></i>
+<form class="ui form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <div class="fields">
+    <div class="sixteen wide field">
+      <div class="ui left icon input">
+        <input type="text" id="name" placeholder="სახელი" formControlName="name">
+        <i class="address card icon"></i>
+      </div>
+      <ng-container *ngIf="get('name').invalid && get('name').touched">
+        <p class="error" *ngFor="let error of errors('name')">{{ error }}</p>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<div class="fields">
-  <div class="sixteen wide field">
-    <div class="ui left icon input">
-      <input type="text" id="username" placeholder="მომხმარებელი">
-      <i class="user icon"></i>
+  <div class="fields">
+    <div class="sixteen wide field">
+      <div class="ui left icon input">
+        <input type="text" id="username" placeholder="მომხმარებელი" formControlName="username">
+        <i class="user icon"></i>
+      </div>
+      <ng-container *ngIf="get('username').invalid && get('username').touched">
+        <p class="error" *ngFor="let error of errors('username')">{{ error }}</p>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<div class="fields">
-  <div class="sixteen wide field">
-    <div class="ui left icon input">
-      <input type="password" id="password" placeholder="პაროლი">
-      <i class="lock icon"></i>
+  <div class="fields">
+    <div class="sixteen wide field">
+      <div class="ui left icon input">
+        <input type="password" id="password" placeholder="პაროლი" formControlName="password">
+        <i class="lock icon"></i>
+      </div>
+      <ng-container *ngIf="get('password').invalid && get('password').touched">
+        <p class="error" *ngFor="let error of errors('password')">{{ error }}</p>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<div class="fields">
-  <div class="sixteen wide field">
-    <div class="ui left icon input">
-      <input type="password" id="repassword" placeholder="განმეორებითი პაროლი">
-      <i class="lock icon"></i>
+  <div class="fields">
+    <div class="sixteen wide field">
+      <div class="ui left icon input">
+        <input type="password" id="repassword" placeholder="განმეორებითი პაროლი" formControlName="repassword">
+        <i class="lock icon"></i>
+      </div>
+      <ng-container *ngIf="get('repassword').invalid && get('repassword').touched">
+        <p class="error" *ngFor="let error of errors('repassword')">{{ error }}</p>
+      </ng-container>
     </div>
   </div>
-</div>
 
-<div>
-  <a routerLink="/auth">
-    <span class="ui orange text">შესვლა</span>
-  </a>
-  <button class="ui basic orange right floated button">
-    <i class="sign in alternate icon"></i>
-    რეგისტრაცია</button>
-</div>
+  <div>
+    <a routerLink="/auth">
+      <span class="ui orange text">შესვლა</span>
+    </a>
+    <button class="ui basic orange right floated button" type="submit">
+      <i class="sign in alternate icon"></i>
+      რეგისტრაცია</button>
+  </div>
+</form>

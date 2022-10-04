@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {BgValidators} from '../../bg-validators';
+import {BgValidators} from '../../shared/bg-validators';
+import {AuthService} from '../../shared/auth/auth.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'bg-login',
@@ -10,12 +13,12 @@ import {BgValidators} from '../../bg-validators';
 export class LoginComponent implements OnInit {
 
   logInForm: FormGroup;
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.logInForm = new FormGroup({
-      userName: new FormControl(undefined, BgValidators.required),
-      passWord: new FormControl(undefined, BgValidators.required)
+      username: new FormControl(undefined, [BgValidators.required, BgValidators.minLength(2), BgValidators.maxLength(30), BgValidators.noSpaces]),
+      password: new FormControl(undefined, [BgValidators.required, BgValidators.minLength(2), BgValidators.maxLength(30)])
     });
   }
 
@@ -27,6 +30,22 @@ export class LoginComponent implements OnInit {
     if (this.get(controlName).errors){
       return Object.values(this.get(controlName).errors);
     }
+  }
+
+  onLogin(){
+
+    if (this.logInForm.invalid){
+      return;
+    }
+
+    const username = this.get('username').value;
+    const password = this.get('password').value;
+
+    this.auth.login(this.get('username').value, this.get('password').value).
+    subscribe((userData) => {
+      console.log(userData);
+      this.router.navigate(['/bpm/bpm000']);
+    });
   }
 
 }

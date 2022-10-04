@@ -10,6 +10,12 @@ import { ShellHeaderComponent } from './shell/shell-header/shell-header.componen
 import { ShellSidebarComponent } from './shell/shell-sidebar/shell-sidebar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { Bpm000Component } from './shell/modules/bpm/bpm000/bpm000.component';
+import { Bpm001Component } from './shell/modules/bpm/bpm001/bpm001.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {UrlInterceptorService} from './shared/url-interceptor.service';
+import { LoaderComponent } from './shared/loader/loader.component';
+import {AuthInterceptorService} from './shared/auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -19,15 +25,28 @@ import { RegisterComponent } from './auth/register/register.component';
     ShellHeaderComponent,
     ShellSidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    Bpm000Component,
+    Bpm001Component,
+    LoaderComponent
   ],
     imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [ {
+    provide: HTTP_INTERCEPTORS,
+    useClass: UrlInterceptorService,
+    multi: true
+  },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
