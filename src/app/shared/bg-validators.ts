@@ -27,4 +27,10 @@ export class BgValidators extends Validators {
       }
      }
   }
+
+  static minZero(control: AbstractControl): ValidationErrors {
+    if (control.value < 0) {
+     return  { minZero: 'გთხოვთ შეიყვანოთ მინიმუმ 0'};
+        }
+  }
 }

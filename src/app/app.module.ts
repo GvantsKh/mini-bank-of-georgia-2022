@@ -16,6 +16,13 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {UrlInterceptorService} from './shared/url-interceptor.service';
 import { LoaderComponent } from './shared/loader/loader.component';
 import {AuthInterceptorService} from './shared/auth/auth-interceptor.service';
+import { ClientHeaderComponent } from './shell/client-header/client-header.component';
+import { KrnicpComponent } from './shell/modules/krn/krnicp/krnicp.component';
+import { AccountsComponent } from './shell/modules/krn/accounts/accounts.component';
+import { CreateAccountComponent } from './shell/modules/krn/accounts/create-account/create-account.component';
+import { OperationsComponent } from './shell/modules/krn/operations/operations.component';
+import { PmdComponent } from './shell/modules/krn/pmd/pmd.component';
+import { Pmd311Component } from './shell/modules/krn/pmd/pmd311/pmd311.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,14 @@ import {AuthInterceptorService} from './shared/auth/auth-interceptor.service';
     RegisterComponent,
     Bpm000Component,
     Bpm001Component,
-    LoaderComponent
+    LoaderComponent,
+    ClientHeaderComponent,
+    KrnicpComponent,
+    AccountsComponent,
+    CreateAccountComponent,
+    OperationsComponent,
+    PmdComponent,
+    Pmd311Component
   ],
     imports: [
         BrowserModule,

@@ -50,26 +50,22 @@ export class AuthService{
     );
 
     this.user.next(user);
-    localStorage.setItem('userData',JSON.stringify(user));
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   autoLogin() {
-
-    const resData = JSON.parse(localStorage.getItem('userData'));
-
-    if (!resData){
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
       return;
     }
-
     const user = new User(
-      resData._token,
-      new Date(resData.expirationDate),
-      resData.name,
-      resData.username,
-      resData.image
+      userData._token,
+      new Date(userData._tokenExpirationDate),
+      userData.name,
+      userData.username,
+      userData.image
     );
-
-    if (!resData._token){
+    if (user.token) {
       this.user.next(user);
     }
 
@@ -79,5 +75,6 @@ export class AuthService{
     this.user.next(undefined);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
+    localStorage.removeItem('client');
   }
 }
