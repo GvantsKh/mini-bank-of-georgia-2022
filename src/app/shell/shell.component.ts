@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
+  localClient;
+
   get curDate() {
     const d = new Date();
     return `${('0' + d.getDate()).slice(-2)}/${('0' + (d.getMonth() + 1)).slice(-2)}/${d.getFullYear()}`;
@@ -15,6 +17,7 @@ export class ShellComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.localClient = JSON.parse(localStorage.getItem('client'));
   }
 
 }

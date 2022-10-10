@@ -8,9 +8,15 @@ import {AuthService} from '../../shared/auth/auth.service';
 })
 export class ShellHeaderComponent implements OnInit {
 
+  isActive = false;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  activated(){
+    this.isActive === true ? this.isActive = false : this.isActive = true;
   }
 
   logout(){

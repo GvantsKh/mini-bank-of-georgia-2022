@@ -3,7 +3,6 @@ import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
 import {ClientInfoModel} from './clientInfo.model';
 import {Clients} from './clients.model';
-import {User} from '../../../../shared/auth/auth.model';
 
 @Injectable({
   providedIn: 'root'

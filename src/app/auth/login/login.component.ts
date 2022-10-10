@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {BgValidators} from '../../shared/bg-validators';
 import {AuthService} from '../../shared/auth/auth.service';
 import {Router} from '@angular/router';
-
 
 @Component({
   selector: 'bg-login',
@@ -13,6 +12,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   logInForm: FormGroup;
+  error;
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,13 +38,11 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const username = this.get('username').value;
-    const password = this.get('password').value;
-
     this.auth.login(this.get('username').value, this.get('password').value).
     subscribe((userData) => {
-      console.log(userData);
       this.router.navigate(['/bpm/bpm000']);
+    }, error => {
+      this.error = error.error;
     });
   }
 

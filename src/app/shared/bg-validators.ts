@@ -33,4 +33,5 @@ export class BgValidators extends Validators {
      return  { minZero: 'გთხოვთ შეიყვანოთ მინიმუმ 0'};
         }
   }
+
 }

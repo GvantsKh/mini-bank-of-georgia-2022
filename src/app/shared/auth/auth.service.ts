@@ -4,7 +4,7 @@ import {AuthRegisterModel} from './auth-register.model';
 import {LoaderService} from '../loader/loader.service';
 import {User} from './auth.model';
 import {tap} from 'rxjs/operators';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 
 export class AuthService{
-
+  error;
   user = new BehaviorSubject<User>(undefined);
 
   constructor(private http: HttpClient,

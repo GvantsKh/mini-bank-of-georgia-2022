@@ -4,7 +4,6 @@ import {BgValidators} from '../../shared/bg-validators';
 import {AuthService} from '../../shared/auth/auth.service';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'bg-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']

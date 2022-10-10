@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  // tslint:disable-next-line:component-selector
   selector: 'bg-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
 
-  constructor(public route: ActivatedRoute) { }
+  error;
+  constructor() { }
 
   ngOnInit(): void {
   }
