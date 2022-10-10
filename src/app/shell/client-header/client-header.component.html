@@ -1,0 +1,57 @@
+
+  <div class="ui container">
+
+    <div class="ui segments">
+      <div class="ui segment client-header">
+        <div class="left-side">
+          <div class="client-image">
+            <img src="{{image}}">
+          </div>
+
+          <div class="client-info">
+            <div class="name">
+              <b>{{firstName}} {{lastName}}</b>
+            </div>
+
+            <div class="client-key">
+              <span class="label">უნიკალური კოდი:</span>
+              <b class="value">{{clientKey}}</b>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-side">
+          <div class="actives">
+            <div class="active">
+              <span class="label">აქტივები:</span>
+              <b class="value money">{{sumAmount}}</b>
+              <b class="ccy">GEL</b>
+            </div>
+            <div class="active">
+              <span class="label">Plus:</span>
+              <b class="value">{{plusPoints}}</b>
+              <span class="ccy"></span>
+            </div>
+          </div>
+          <div class="logout-button">
+            <button class="ui red button" (click)="clientLogOut()">გასვლა</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="ui horizontal segments navigation">
+        <a routerLinkActive="active" routerLink="/krn/krnicp" class="ui segment page-link"
+           [routerLinkActiveOptions]="{exact: true}">მთავარი</a>
+        <a routerLinkActive="active" routerLink="/krn/accounts" class="ui segment page-link"
+           [routerLinkActiveOptions]="{exact: true}">ანგარიშები</a>
+        <a routerLinkActive="active" routerLink="/krn/operations" class="ui segment page-link"
+           [routerLinkActiveOptions]="{exact: true}">ოპერაციები</a>
+      </div>
+
+    </div>
+  </div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,39 @@
+
+  <div class="ui container">
+    <div class="ui segments">
+      <div class="ui segment accounts">
+        <h1>ანგარიშის შექმნა</h1>
+      </div>
+
+      <div class="ui segment">
+        <div class="ui form" [formGroup]="accRegForm">
+          <div class="fields">
+            <div class="nine wide field">
+              <label>ანგარიშის სახელი</label>
+              <input type="text" formControlName="accName">
+              <ng-container *ngIf="get('accName').invalid && get('accName').touched">
+                <p class="error" *ngFor="let error of errors('accName')">{{ error }}</p>
+              </ng-container>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="nine wide field">
+              <label>თანხა</label>
+              <input type="number" formControlName="amount">
+              <ng-container *ngIf="get('amount').invalid && get('amount').touched">
+                <p class="error" *ngFor="let error of errors('amount')">{{ error }}</p>
+              </ng-container>
+            </div>
+
+          </div>
+
+          <div class="search-btn">
+            <button class="ui left-aligned orange button" (click)="accountReg()">შექმნა</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,22 @@
+.shell__content {
+  float: right;
+  width: calc(100% - 256px);
+  background-color: #f0f3f6;
+  height: calc(100% - 60px);
+}
+
+.error{
+  color: red;
+}
+
+.ui.segment{
+  padding: 1em;
+}
+
+.ui.form{
+  background-color: white;
+}
+
+.ui.container{
+  margin-top: 15px;
+}
