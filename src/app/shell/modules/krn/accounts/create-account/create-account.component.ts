@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {AccountsModel} from '../accounts.model';
 import {GetClientService} from '../../../bpm/bpm000/getClient.service';
 import {Router} from '@angular/router';
+import {LoaderService} from '../../../../../shared/loader/loader.service';
 
 @Component({
   selector: 'bg-create-account',
@@ -16,10 +17,12 @@ export class CreateAccountComponent implements OnInit {
   accRegForm: FormGroup;
   clientKey;
   accounts: [];
+  client;
 
   constructor(private http: HttpClient,
               private getClientService: GetClientService,
-              private router: Router) { }
+              private router: Router,
+              private loader: LoaderService) { }
 
   ngOnInit(): void {
     this.accRegForm = new FormGroup({
@@ -46,7 +49,7 @@ export class CreateAccountComponent implements OnInit {
       clientKey: this.clientKey,
       accountName: this.accRegForm.value.accName,
       amount: this.accRegForm.value.amount
-    })
+    }).pipe(this.loader.useLoader)
       .subscribe((accounts) => {
         this.router.navigate(['krn/accounts']);
       });

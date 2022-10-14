@@ -33,9 +33,9 @@ export class GetClientService{
     );
 
     this.client.next(client);
-    this.router.navigate(['krn/krnicp']);
     localStorage.setItem('client', JSON.stringify(client));
     this.sessionClient = JSON.parse(localStorage.getItem('client'));
+    this.router.navigate(['krn/krnicp']);
   }
 
   autoClient() {

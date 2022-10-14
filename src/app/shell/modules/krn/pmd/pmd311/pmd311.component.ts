@@ -37,11 +37,13 @@ export class Pmd311Component implements OnInit {
     });
 
     this.http.get<AccountsModel[]>('accounts?clientKey=' + this.clientKey)
+      .pipe(this.loader.useLoader)
       .subscribe((accounts) => {
         this.senderAcc = accounts;
       });
 
     this.http.get<AccountsModel[]>('accounts')
+      .pipe(this.loader.useLoader)
       .subscribe((accounts) => {
         this.receiverAcc = accounts;
       });

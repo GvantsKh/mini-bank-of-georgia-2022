@@ -3,6 +3,7 @@ import {AccountsModel} from './accounts.model';
 import {HttpClient} from '@angular/common/http';
 import {GetClientService} from '../../bpm/bpm000/getClient.service';
 import {Router} from '@angular/router';
+import {LoaderService} from '../../../../shared/loader/loader.service';
 
 @Component({
   selector: 'bg-accounts',
@@ -15,10 +16,10 @@ export class AccountsComponent implements OnInit {
   accounts: Array<AccountsModel> = [];
   accKey;
 
-
   constructor(private http: HttpClient,
               private getClientService: GetClientService,
-              private router: Router) { }
+              private router: Router,
+              private loader: LoaderService) { }
 
   ngOnInit(): void {
     this.getAccounts();
@@ -30,6 +31,7 @@ export class AccountsComponent implements OnInit {
       this.clientKey = clientData.clientKey;
     });
     return this.http.get<AccountsModel[]>('accounts?clientKey=' + this.clientKey)
+      .pipe(this.loader.useLoader)
       .subscribe((accounts) => {
         this.accounts = accounts;
       });
@@ -41,10 +43,11 @@ export class AccountsComponent implements OnInit {
 
   delAccount(accKey){
    this.http.delete('accounts?accountKey=' + accKey )
+     .pipe(this.loader.useLoader)
      .subscribe(
        () => {
          this.accounts = this.accounts.filter((acc) => acc.accountKey !== this.accKey);
-         window.location.reload();
+         this.getAccounts();
        });
   }
 

@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'bg-shell',
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss']
 })
-export class ShellComponent implements OnInit {
+export class ShellComponent implements OnInit{
 
-  localClient;
+
+  get localClient(){
+    return JSON.parse(localStorage.getItem('client'));
+  }
 
   get curDate() {
     const d = new Date();
@@ -17,7 +20,5 @@ export class ShellComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.localClient = JSON.parse(localStorage.getItem('client'));
   }
-
 }
