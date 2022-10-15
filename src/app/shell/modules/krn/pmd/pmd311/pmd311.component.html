@@ -13,7 +13,7 @@
               <select formControlName="sender">
                 <option disabled="">აირჩიე</option>
                 <option *ngFor="let acc of senderAcc" value="{{acc.accountKey}}">
-                  {{acc.accountKey}} - {{acc.amount}}GEL ({{acc.accountName}})
+                  {{acc.accountKey}} - {{acc.amount | number: '0.2'}}GEL ({{acc.accountName}})
                 </option>
               </select>
               <ng-container *ngIf="get('sender').invalid && get('sender').touched">
@@ -28,7 +28,7 @@
               <select formControlName="receiver">
                 <option disabled="" value="">აირჩიე</option>
                 <option *ngFor="let acc of receiverAcc" value="{{acc.accountKey}}">
-                  {{acc.accountKey}} - {{acc.amount}}GEL ({{acc.accountName}})
+                  {{acc.accountKey}} - {{acc.amount | number: '0.2'}}GEL ({{acc.accountName}})
                 </option>
               </select>
               <ng-container *ngIf="get('receiver').invalid && get('receiver').touched">

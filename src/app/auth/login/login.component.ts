@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup} from '@angular/forms';
 import {BgValidators} from '../../shared/bg-validators';
 import {AuthService} from '../../shared/auth/auth.service';
@@ -12,7 +12,10 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   logInForm: FormGroup;
-  error;
+
+  loginError;
+
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
     subscribe((userData) => {
       this.router.navigate(['/bpm/bpm000']);
     }, error => {
-      this.error = error.error;
+      this.loginError = error;
     });
   }
 

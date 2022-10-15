@@ -51,11 +51,6 @@ const routes: Routes = [
             path: 'bpm001',
             component: Bpm001Component
           },
-          {
-            path: '',
-            redirectTo: 'bpm000',
-            pathMatch: 'full',
-          },
         ],
       },
       {
@@ -77,11 +72,6 @@ const routes: Routes = [
           {
             path: 'operations',
             component: OperationsComponent
-          },
-          {
-            path: '',
-            redirectTo: 'krnicp',
-            pathMatch: 'full',
           },
         ],
       },
